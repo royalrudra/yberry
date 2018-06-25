@@ -1,29 +1,4 @@
-.App {
-  text-align: center;
-}
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 60px;
-  
-  color: white;
-}
-
-.App-title {
-  font-size: 1.5em;
-  padding: 0px;
-  margin: 0px;
-  padding-top: 10px
-}
-
-.App-intro {
-  font-size: large;
-}
 .catg{
   width: 250px;
   border: 1px solid;
@@ -31,13 +6,24 @@
   position: relative;
   background: red;
   
-  
-  
 }
 
+.slick-dots {
+  bottom: -14px;
+  width: 100%;
+  margin: 0;
+  list-style: none;
+  text-align: center;
+}
+.slick-next {
+  right: 8px;
+}
+.slick-prev{
+  left: 8px;
+  z-index: 99;
+
+}
 .cn {
-
-
   margin: 0px;
   position: absolute;
   top: 50%;
@@ -46,17 +32,71 @@
  
 } 
 
-/* 
 
-.inner {
-  display: inline-block;
-  width: 200px; height: 200px;
-} */
-
-
-
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+/* header  */
+.ant-layout-header {
+  background-color:  #640f26;
+  padding: 0 50px;
+  height: 64px;
+  line-height: 64px;
 }
+.header{
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  background-color:  #640f26;
+  padding: 0 50px;
+  height: 64px;
+  line-height: 64px;
+}
+.header-logo{
+  height: 64px;
+}
+ /* header */
+ /* content */
+    .item-menu{
+      margin-top: 10px;
+      display: flex;
+      height: calc(97vh - 257px);
+    }
+ /* content */
+ .product{
+   margin-top: 10px;
+   width: 70%;
+   background: thistle;
+   height: calc(97vh - 257px);
+   /* overflow: auto; */
+ }
+ .cart{
+   width: 30%;
+   background:purple;
+   height: calc(97vh - 257px);
+ }
+ .ant-card-body {
+  -webkit-transition: padding .3s;
+  transition: padding .3s;
+  overflow: auto;
+  height: 701px;}
+ 
+  .item-self{
+    position: relative;
+  }
+  
+  .item-price{
+
+position: absolute;
+top: 0px;
+right: 0;
+width: 40px;
+color: white;
+background: #630f27;
+  }
+  .item-image{
+    height: auto;
+    /* max-width: 205px; */
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    
+  }

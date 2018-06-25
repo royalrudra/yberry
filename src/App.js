@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-import Header from "./component/header";
-import Cart from "./component/cart";
-import Menu from "./component/menu";
-import Product from "./component/product";
 import './App.css';
+import Mainapp from './MainApp';
 
 class App extends Component {
 
@@ -13,10 +10,7 @@ class App extends Component {
     return (
       <div className="App">
       
-       <Header />
-        <Menu/>
-        <Product />
-        <Cart />
+   <Mainapp />
 
       </div>
     );
