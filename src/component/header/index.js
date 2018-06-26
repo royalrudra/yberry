@@ -10,7 +10,7 @@ export default class Header extends Component {
                 <img className="header-logo"    alt="Logo" src={Logo} />
                 </div>
                 <div className="header-right">
-                <Button ghost>Primary</Button>
+                <Button ghost>Log Out</Button>
                 </div>
 
             </div>

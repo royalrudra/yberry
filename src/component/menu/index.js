@@ -16,6 +16,7 @@ export default class Menu extends Component {
             <div>
                  <Slider {...settings}>
         {count.map((item,index) => 
+        
           <div className="catg" key={index}>
           <h3 className="cn"  >{item}</h3>
         </div>

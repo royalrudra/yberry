@@ -1,12 +1,15 @@
+body{
+  color: white;
+}
+
 
 .catg{
   width: 250px;
   border: 1px solid;
-  height: 200px;
+  height: 100px;
   position: relative;
   background: red;
-  
-}
+} 
 
 .slick-dots {
   bottom: -14px;
@@ -24,6 +27,7 @@
 
 }
 .cn {
+  color: white;
   margin: 0px;
   position: absolute;
   top: 50%;
@@ -68,15 +72,31 @@
    /* overflow: auto; */
  }
  .cart{
-   width: 30%;
-   background:purple;
-   height: calc(97vh - 257px);
+ 
+
+   width: 28%;
+   margin-top: 9px;
+   margin-left: 10px;
+   background: purple;
+   height: calc(97vh - 240px);
  }
+ .ant-card-grid {
+  padding: 2px !important;
+}
+
+.cart-action{
+  position: relative;
+}
+
+ 
  .ant-card-body {
+   
   -webkit-transition: padding .3s;
   transition: padding .3s;
   overflow: auto;
-  height: 701px;}
+  padding: 0px !important;
+  height: calc(97vh - 225px);
+}
  
   .item-self{
     position: relative;
@@ -85,8 +105,8 @@
   .item-price{
 
 position: absolute;
-top: 0px;
-right: 0;
+top: 2px;
+right: 2px;
 width: 40px;
 color: white;
 background: #630f27;
@@ -95,8 +115,66 @@ background: #630f27;
     height: auto;
     /* max-width: 205px; */
     width: 100%;
-    position: absolute;
+    /* position: absolute; */
     top: 0;
     left: 0;
     
   }
+
+  .ant-card-grid{
+    padding: 0px;
+  }
+  
+
+  .item-name {
+    color: white;
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    /* text-align: center; */
+}
+
+.Card-buttons{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+.Card-buttons .ant-card-grid{
+  width: 50%;
+  position: relative;
+    height: 75px;
+    text-align: center;
+    
+}
+.cart-button-name{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  color: white;
+}
+.cart-cash{
+background: #9178E0}
+.cart-card{
+background: #FC936F
+} 
+.cart-cancel{
+  background:#F9506B;
+} 
+.cart-note{
+  background: #49DEAD
+}
+
+
+.cartlist{
+    display: flex;
+    /* padding: 2px 17px; */
+    padding-top: 16px;
+    border-bottom: 1px solid #3333333b;
+    -ms-flex-pack: justify;
+    justify-content: space-around;
+}
+.taxpay{
+  display: flex;
+  justify-content: space-around
+}
