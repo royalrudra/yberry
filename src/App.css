@@ -176,5 +176,7 @@ background: #FC936F
 }
 .taxpay{
   display: flex;
-  justify-content: space-around
+  padding: 0px 12px;
+  border-bottom: 1px dashed;
+  justify-content: space-between;
 }
