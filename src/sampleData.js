@@ -1,5 +1,5 @@
 export default {
-    categories: [
+    cats: [
         {
             id: 0, 
             name: 'Packages'

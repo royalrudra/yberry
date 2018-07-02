@@ -72,13 +72,12 @@ body{
    /* overflow: auto; */
  }
  .cart{
- 
-
    width: 28%;
    margin-top: 9px;
    margin-left: 10px;
    background: purple;
    height: calc(97vh - 240px);
+   
  }
  .ant-card-grid {
   padding: 2px !important;
@@ -179,4 +178,10 @@ background: #FC936F
   padding: 0px 12px;
   border-bottom: 1px dashed;
   justify-content: space-between;
+}
+.centerme{
+  justify-content: center;
+    align-items: center;
+    display: flex;
+    height: 100%;
 }

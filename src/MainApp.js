@@ -3,17 +3,55 @@ import Header from "./component/header";
 import Cart from "./component/cart";
 import Menu from "./component/menu";
 import Product from "./component/product";
+import handleLogin from "./component/fetch";
 
-const sampleData = require('./sampleData')
+// const sampleData = require('./sampleData')
 
 class Mainapp extends Component {
   state = {
-    data: sampleData.default,
+    data: [],
     currentCategoryIndex: null,
     selectedProductIds: [],
-    selectedProducts: [],
-    cartTotal: 0
+    selectedProducts: [], // products
+    cartTotal: 0,
+    loggin:false,
+    
   }
+  
+   handleData=()=>{
+    console.log("login")
+    fetch("http://192.168.0.73/cdc-new/public/api/food/all-details", {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+   
+  }).then(function(response) {
+    return response.json();
+    
+  }).then((data) =>{ 
+    console.log("data-main",data)
+    this.setState({
+      data:data.data,
+    
+        loggin:true,
+    })
+   }
+  )
+  .catch(error => {
+  console.log(error)
+  }) 
+ }
+
+
+  componentDidMount(){
+    console.log()
+    this.handleData();
+   
+  }
+
+
   onCategorySelect = index => this.setState({currentCategoryIndex: index})
   getItemIndex = item => this.state.selectedProductIds.indexOf(item.id);
   onProductSelect = item => {
@@ -47,7 +85,6 @@ class Mainapp extends Component {
     currentItem.totalPrice = currentItem.totalPrice + (direction * parseInt(currentItem.price));
     let cartTotal = this.state.cartTotal + (direction * parseInt(currentItem.price));
     selectedProducts[index] = currentItem;
-
     if(currentItem.count === 0) {
       selectedIds.splice(index, 1);
       selectedProducts.splice(index, 1);
@@ -64,13 +101,32 @@ class Mainapp extends Component {
     selectedProducts.splice(index, 1);
     this.setState({cartTotal, selectedProductIds: selectedIds, selectedProducts});
   }
+  onCancel=()=>{
+    console.log("oncancle")
+    
+    this.setState({
+      
+      selectedProductIds: [],
+      selectedProducts: [], // products
+      cartTotal: 0
+    })
+  }
+  
   render() {
+    console.log("banks", this.state.data.banks)
     const {data, currentCategoryIndex, selectedProducts, cartTotal} = this.state;
+    console.log("datahere",this.state.data,this.state.datas)
+    if(!this.state.loggin){
+      return(
+        <h1>Loading.....</h1>
+      )
+    }
     return (
+
       <div>
         <Header/>
         <Menu 
-          data={data.categories}
+          data={this.state.data.categories}
           onSelect={this.onCategorySelect}
         />
         <div className="item-menu">
@@ -82,7 +138,9 @@ class Mainapp extends Component {
           </div>
           <div className="cart">
             <Cart 
+              banks={this.state.data.banks}
               className="cart"
+              onCancel={this.onCancel}
               data={selectedProducts}
               onReduce={this.onChangeItem(-1)}
               onAdd={this.onChangeItem(1)}

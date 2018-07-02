@@ -12,7 +12,7 @@ export default class Cartbutton extends Component {
           
     
    <div>
-            <Card.Grid style={gridStyle} className={this.props.cardclass} >
+            <Card.Grid onClick={this.props.onAction} style={gridStyle} className={this.props.cardclass} >
             <p  className="cart-button-name"> {this.props.cardname}</p>
             </Card.Grid>
     </div>
