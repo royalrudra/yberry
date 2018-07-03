@@ -34,10 +34,11 @@ export default class Cart extends Component {
                {/* <Cartlist data={data}/> */}
               
                 <div className="Card-buttons">
+
                 <Taxpay name="Sub-Total" price={cartTotal} />
                 <Taxcart price={cartTotal} />
                 <Cardmodal banks={this.props.banks} />
-                 <Paymodal />       
+                 <Paymodal totalPrice={cartTotal} />       
                 <Notemodal />
                 <Cancelmodal onCancel={this.props.onCancel} />
               
@@ -52,12 +53,12 @@ const CartItem = ({item, onReduce, onAdd, onClear}) => (
                 <p>
                     {item.title}
                 </p>
-                <div>
+                <div className="cartlistdiv">
                     <i className="fa fa-plus-square " onClick={onAdd} aria-hidden="true"></i>
                     {item.count}
                     <i className="fa fa-minus-square " onClick={onReduce} aria-hidden="true"></i>
                 </div>
-                <div>
+                <div className="cartlistprice">
                     Rs.{item.totalPrice}
                     <i class="fa fa-times" onClick={onClear} aria-hidden="true"></i>
                 </div>               

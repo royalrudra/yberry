@@ -1,59 +1,110 @@
 import React, {Component} from 'react';
-import { Modal, Button, Card ,} from 'antd';
+import { Button, Modal, Form, Input, Radio,Card } from 'antd';
 
-export default class modal extends React.Component {
+const FormItem = Form.Item;
+
+const CollectionCreateForm = Form.create()(
+  class extends React.Component {
+    constructor(){
+      super();
+     
+      this.state = {
+        number:0
+      };
+    
+    }
+
+    change =e =>{
+        
+      this.setState({
+          [e.target.name]:e.target.value
+      });
+  };
+    
+    render() {
+      const { visible, onCancel, onCreate, form } = this.props;
+      const { getFieldDecorator } = form;
+      
+      return (
+        <Modal
+          visible={visible}
+          title="Cash"
+          okText="Pay"
+          onCancel={onCancel}
+          onOk={onCreate}
+        >
+        <h1>Total Price: {this.props.totalPrice + this.props.totalPrice*13/100}</h1>
+          <Form layout="vertical">
+
+            <FormItem label="Cash">
+              {getFieldDecorator('title', {
+                rules: [{ required: true, message: 'Please input the Cash!' }],
+              })(
+                <Input 
+                type="number"
+                name="number"
+                value={this.state.number}
+                onChange={e=>this.change(e)} />
+              )}
+            </FormItem>
+        
+           
+          </Form>
+          <h1>Return Cash: {this.state.number - this.props.totalPrice - this.props.totalPrice*13/100} </h1>
+        </Modal>
+      );
+    }
+  }
+);
+
+export default class Paymodal extends React.Component {
   state = {
-    loading: false,
     visible: false,
-  }
-  
-  showModal = () => {
-    this.setState({
-      visible: true,
-    });
-  }
+  };
 
-  handleOk = () => {
-    this.setState({ loading: true });
-    setTimeout(() => {
-      this.setState({ loading: false, visible: false });
-    }, 3000);
+  showModal = () => {
+    this.setState({ visible: true });
   }
 
   handleCancel = () => {
     this.setState({ visible: false });
   }
 
+  handleCreate = () => {
+    const form = this.formRef.props.form;
+    form.validateFields((err, values) => {
+      if (err) {
+        return;
+      }
+
+      console.log('Received values of form: ', values);
+      form.resetFields();
+      this.setState({ visible: false });
+    });
+  }
+
+  saveFormRef = (formRef) => {
+    this.formRef = formRef;
+  }
+
   render() {
-    const { visible, loading } = this.state;
     const   gridStyle = {
         width: '50%',
         textAlign: 'center',
       };
     return (
-       <div>
-            <Card.Grid onClick={this.showModal} style={gridStyle} className="cart-cash" >
+      <div>
+        
+        <Card.Grid onClick={this.showModal} style={gridStyle} className="cart-cash" >
             <p  className="cart-button-name">Pay</p>
             </Card.Grid>
-    
-        <Modal
-          visible={visible}
-          title="Title"
-          onOk={this.handleOk}
+        <CollectionCreateForm
+        totalPrice={this.props.totalPrice}
+          wrappedComponentRef={this.saveFormRef}
+          visible={this.state.visible}
           onCancel={this.handleCancel}
-          footer={[
-            <Button key="back" onClick={this.handleCancel}>Return</Button>,
-            <Button key="submit" type="primary" loading={loading} onClick={this.handleOk}>
-              Submit
-            </Button>,
-          ]}
-        >
-          <p>Some contents...</p>
-          <p>Some contents...</p>
-          <p>Some contents...</p>
-          <p>Some contents...</p>
-          <p>Some contents...</p>
-        </Modal>
+          onCreate={this.handleCreate}
+        />
       </div>
     );
   }

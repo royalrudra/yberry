@@ -7,6 +7,7 @@ export default class Product extends Component {
     }
     render() {
         const { data, onSelect } = this.props;
+       
         console.log("datassss",data.length)
         const gridStyle = {
             width: '20%',

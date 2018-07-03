@@ -20,7 +20,7 @@ class Mainapp extends Component {
   
    handleData=()=>{
     console.log("login")
-    fetch("http://192.168.0.73/cdc-new/public/api/food/all-details", {
+    fetch("http://www.esigntech.com.au/2018/cdc_test/public/api/food/all-details", {
     method: 'GET',
     headers: {
       'Accept': 'application/json',
@@ -126,7 +126,7 @@ class Mainapp extends Component {
       <div>
         <Header/>
         <Menu 
-          data={this.state.data.categories}
+          data={this.state.data.cats}
           onSelect={this.onCategorySelect}
         />
         <div className="item-menu">

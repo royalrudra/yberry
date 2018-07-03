@@ -86,6 +86,10 @@ body{
 .cart-action{
   position: relative;
 }
+.cart-list{
+  height: 55%;
+    overflow: auto;
+}
 
  
  .ant-card-body {
@@ -129,7 +133,11 @@ background: #630f27;
     color: white;
     position: absolute;
     bottom: 0px;
-    width: 100%;
+    width: calc(100% - 4px);
+    margin-bottom: 0px;
+    padding-top: 5px;
+    background: rgba(0,0,0,0.5);
+    padding-bottom: 5px;
     /* text-align: center; */
 }
 
@@ -171,8 +179,32 @@ background: #FC936F
     padding-top: 16px;
     border-bottom: 1px solid #3333333b;
     -ms-flex-pack: justify;
-    justify-content: space-around;
+    /* justify-content: space-around; */
 }
+.cartlist p{
+  padding-left: 10px;
+  width:50%;
+
+}
+.cartlistdiv{
+  width:25%;
+ 
+  
+}
+.cartlistdiv i{
+  font-size: 18px;
+  padding:3px;
+  color: #630f27;
+  
+}
+.cartlistprice i{
+color:#dc3545!important;
+padding-left:5px;
+}
+.cartlistprice{
+  width: 25%;
+}
+
 .taxpay{
   display: flex;
   padding: 0px 12px;
