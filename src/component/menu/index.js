@@ -13,7 +13,7 @@ let repeats = 3;
           .map(function(e,i){return arrayA[i % arrayA.length]});
     
     const {data, onSelect} = this.props;
-   console.log("data====",data)
+  
     var settings = {
       dots: true,
       infinite: true,
@@ -30,9 +30,9 @@ let repeats = 3;
     //     </div>
     //   )
     // }
-let classstyle=arrayB.map(i=> console.log(i));
+// let classstyle=arrayB.map(i=> console.log(i));
 
-        console.log()
+       
     return (
 
       <div>

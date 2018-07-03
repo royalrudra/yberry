@@ -160,6 +160,7 @@ background: #630f27;
   transform: translateX(-50%) translateY(-50%);
   color: white;
 }
+
 .cart-cash{
 background: #9178E0}
 .cart-card{
@@ -171,6 +172,8 @@ background: #FC936F
 .cart-note{
   background: #49DEAD
 }
+.cart-hold{
+  background: rgb(120, 156, 224)}
 
 
 .cartlist{
@@ -216,4 +219,27 @@ padding-left:5px;
     align-items: center;
     display: flex;
     height: 100%;
+}
+
+.cart-cart{
+ height: 50px;
+  border-bottom: 1px dotted black;
+  display: flex;
+  justify-content: space-between;
+}
+.cart-cart h1{
+  
+  padding-left: 3%;
+    padding-top: 2%;
+ 
+}
+.cart-cart button{
+  margin-top: 3%;
+    margin-right: 2%;
+}
+.head-example{
+  background: chocolate
+}
+.hold-list{
+  width: 100px;
 }

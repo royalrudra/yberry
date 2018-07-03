@@ -15,11 +15,12 @@ class Mainapp extends Component {
     selectedProducts: [], // products
     cartTotal: 0,
     loggin:false,
+    hold:[]
     
   }
   
    handleData=()=>{
-    console.log("login")
+ 
     fetch("http://www.esigntech.com.au/2018/cdc_test/public/api/food/all-details", {
     method: 'GET',
     headers: {
@@ -31,7 +32,7 @@ class Mainapp extends Component {
     return response.json();
     
   }).then((data) =>{ 
-    console.log("data-main",data)
+  
     this.setState({
       data:data.data,
     
@@ -46,7 +47,7 @@ class Mainapp extends Component {
 
 
   componentDidMount(){
-    console.log()
+   
     this.handleData();
    
   }
@@ -76,6 +77,16 @@ class Mainapp extends Component {
     this.setState({selectedProductIds: selectedIds, selectedProducts: selectedItems, cartTotal});
   }
   
+  onHoldclick=()=>{
+
+    // selectedProducts,
+    let holditem=this.state.selectedProducts
+    this.setState({
+      hold:[holditem,...this.state.hold],
+
+    })
+    this.onCancel();
+  }
   onChangeItem = direction => item => {
     let index = this.getItemIndex(item);
     let selectedIds = this.state.selectedProductIds;
@@ -102,7 +113,7 @@ class Mainapp extends Component {
     this.setState({cartTotal, selectedProductIds: selectedIds, selectedProducts});
   }
   onCancel=()=>{
-    console.log("oncancle")
+  
     
     this.setState({
       
@@ -113,9 +124,9 @@ class Mainapp extends Component {
   }
   
   render() {
-    console.log("banks", this.state.data.banks)
+   
     const {data, currentCategoryIndex, selectedProducts, cartTotal} = this.state;
-    console.log("datahere",this.state.data,this.state.datas)
+  
     if(!this.state.loggin){
       return(
         <h1>Loading.....</h1>
@@ -138,6 +149,8 @@ class Mainapp extends Component {
           </div>
           <div className="cart">
             <Cart 
+            hold={this.state.hold}
+              onHoldclick={this.onHoldclick}
               banks={this.state.data.banks}
               className="cart"
               onCancel={this.onCancel}

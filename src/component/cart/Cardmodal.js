@@ -10,7 +10,7 @@ const CollectionCreateForm = Form.create()(
     render() {
       const { visible, onCancel, onCreate, form,banks } = this.props;
       const { getFieldDecorator } = form;
-     console.log("banks",banks)
+     
       return (
         <Modal
           visible={visible}
@@ -71,7 +71,6 @@ export default class Cardmodal extends React.Component {
         return;
       }
 
-      console.log('Received values of form: ', values);
       form.resetFields();
       this.setState({ visible: false });
     });

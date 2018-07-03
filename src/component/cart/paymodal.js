@@ -77,7 +77,7 @@ export default class Paymodal extends React.Component {
         return;
       }
 
-      console.log('Received values of form: ', values);
+    
       form.resetFields();
       this.setState({ visible: false });
     });

@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
-import { Card } from 'antd';
-import Cartbutton from "./cartbutton"
-import Cartlist from "./cartlist";
+
+import { Menu, Dropdown, Button ,Card} from 'antd';
+
+import Cartbutton from "./cartbutton";
 import Taxpay from "./taxpay";
 import Taxcart from "./taxcart";
 import Cardmodal from "./Cardmodal";
 import Paymodal from "./paymodal";
 import Notemodal from "./notemodal";
-import Cancelmodal from "./canclemodal"
+import Cancelmodal from "./canclemodal";
+import Hold from "./hold";
+import Holdlist from "./holdList";
 
+
+  
 
 export default class Cart extends Component {
     constructor(){
@@ -16,12 +21,15 @@ export default class Cart extends Component {
 
     }
 
-    render() {
-        console.log("indexcartbanks",this.props.banks)
-         
-    const { data, onReduce, onAdd, cartTotal, onClear } = this.props;
+    
+    render() { 
+    const { data, onReduce, onAdd, cartTotal, onClear ,hold} = this.props;
         return (
-            <Card title="Cart"  className="cart-header">
+            <Card   className="cart-header">
+            <div className="cart-cart">
+            <h1>Cart</h1>
+               <Holdlist  hold={hold} />
+            </div>
                 <div className="cart-list">
                     {data.map(item => <CartItem 
                         item={item} 
@@ -41,6 +49,7 @@ export default class Cart extends Component {
                  <Paymodal totalPrice={cartTotal} />       
                 <Notemodal />
                 <Cancelmodal onCancel={this.props.onCancel} />
+                <Hold onHoldclick={this.props.onHoldclick} />
               
                 </div>
           </Card>
