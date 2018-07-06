@@ -7,10 +7,31 @@ const Option = Select.Option;
 
 const CollectionCreateForm = Form.create()(
   class extends React.Component {
+   
+      constructor(){
+        super();
+       
+        this.state = {
+         cardtype:"unknown"
+        };
+      
+      }
+  
+      change =e =>{
+        console.log(e)
+        this.setState({
+            [e.target.name]:e.target.value
+        });
+    };
+    handleSubmit=()=>{
+      console.log("something has changed")
+    }
     render() {
       const { visible, onCancel, onCreate, form,banks } = this.props;
       const { getFieldDecorator } = form;
      
+     
+
       return (
         <Modal
           visible={visible}
@@ -24,6 +45,7 @@ const CollectionCreateForm = Form.create()(
         //   {...formItemLayout}
           label="Select Bank"
           hasFeedback
+           
         >
           {getFieldDecorator('select', {
             rules: [
@@ -72,6 +94,7 @@ export default class Cardmodal extends React.Component {
       }
 
       form.resetFields();
+      this.props.onCardpay();
       this.setState({ visible: false });
     });
   }

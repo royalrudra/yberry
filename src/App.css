@@ -110,7 +110,7 @@ body{
 position: absolute;
 top: 2px;
 right: 2px;
-width: 40px;
+width: 40%;
 color: white;
 background: #630f27;
   }
@@ -242,4 +242,19 @@ padding-left:5px;
 }
 .hold-list{
   width: 100px;
+}
+.refresh{
+  padding-right: 10px;
+}
+.ant-btn-dashed {
+  color: #630f27;
+  background-color: #fafafa;
+  border-color: #d9d9d9;
+  border-style: dashed;
+}
+.product-image{
+  height: 152px;
+    width: 20%;
+    background-size: cover !important;
+    background-position: center center !important ;
 }

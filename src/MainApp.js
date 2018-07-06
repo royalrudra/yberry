@@ -3,9 +3,7 @@ import Header from "./component/header";
 import Cart from "./component/cart";
 import Menu from "./component/menu";
 import Product from "./component/product";
-import handleLogin from "./component/fetch";
-
-// const sampleData = require('./sampleData')
+import {addtocart} from "./component/fetch";
 
 class Mainapp extends Component {
   state = {
@@ -15,35 +13,40 @@ class Mainapp extends Component {
     selectedProducts: [], // products
     cartTotal: 0,
     loggin:false,
-    hold:[]
-    
+    hold:[],
+    tax:13,
+    note:"note",
+    bankSelected:"sbi"
   }
+
+  
   
    handleData=()=>{
- 
-    fetch("http://www.esigntech.com.au/2018/cdc_test/public/api/food/all-details", {
-    method: 'GET',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-    },
-   
-  }).then(function(response) {
-    return response.json();
-    
-  }).then((data) =>{ 
-  
-    this.setState({
-      data:data.data,
-    
-        loggin:true,
-    })
-   }
-  )
-  .catch(error => {
-  console.log(error)
-  }) 
+          fetch("http://www.esigntech.com.au/2018/cdc_test/public/api/food/all-details", {
+          method: 'GET',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+        
+        }).then(function(response) {
+          return response.json();
+          
+        }).then((data) =>{ 
+        
+          this.setState({
+            data:data.data,
+          
+              loggin:true,
+          })
+        }
+        )
+        .catch(error => {
+        console.log(error)
+        }) 
  }
+
+
 
 
   componentDidMount(){
@@ -78,7 +81,7 @@ class Mainapp extends Component {
   }
   
   onHoldclick=()=>{
-
+    
     // selectedProducts,
     let holditem=this.state.selectedProducts
     this.setState({
@@ -113,20 +116,23 @@ class Mainapp extends Component {
     this.setState({cartTotal, selectedProductIds: selectedIds, selectedProducts});
   }
   onCancel=()=>{
-  
-    
     this.setState({
-      
       selectedProductIds: [],
       selectedProducts: [], // products
       cartTotal: 0
     })
   }
   
+  onCardpay=()=>{
+      console.log("card pay")
+  }
+  onnoteClicked=()=>{
+    console.log("onnoteclicked")
+  }
+
+
   render() {
-   
     const {data, currentCategoryIndex, selectedProducts, cartTotal} = this.state;
-  
     if(!this.state.loggin){
       return(
         <h1>Loading.....</h1>
@@ -149,6 +155,8 @@ class Mainapp extends Component {
           </div>
           <div className="cart">
             <Cart 
+           onCardpay={this.onCardpay}
+           onnoteClicked={this.onnoteClicked}
             hold={this.state.hold}
               onHoldclick={this.onHoldclick}
               banks={this.state.data.banks}

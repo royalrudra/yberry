@@ -12,7 +12,7 @@ export default class Product extends Component {
         const gridStyle = {
             width: '20%',
             textAlign: 'center',
-            // height:"190px"
+                    // height:"190px"
         };
       if(data.length === 0){
           return(
@@ -21,9 +21,10 @@ export default class Product extends Component {
           </div>)}
         return (
             <Card>
-                {data.map((item, index) => <Card.Grid  onClick={() => onSelect(item)} style={gridStyle} key={index} className="item-self">
-                    <img className="item-image" src={item.image}/>
-                    <p className="item-price">{item.price}</p>
+                {data.map((item, index) => 
+                <Card.Grid  onClick={() => onSelect(item)}  style={{background: `url(${item.image})`}} key={index} className="item-self product-image">
+                    {/* <img className="item-image" src={item.image}/> */}
+                    <p className="item-price">Rs.{item.price}</p>
                     <h3 className="item-name">{item.title}
                     </h3>
                 </Card.Grid>)}

@@ -18,19 +18,10 @@ let repeats = 3;
       dots: true,
       infinite: true,
       speed: 500,
-      slidesToShow:5,
+      slidesToShow:3,
       slidesToScroll: 3
     };
-    // if(data.length = 0){
-    //   return(
-    //     <div className="catg" >
-    //     <h1>Menu </h1>
-    //     <h1>Menu </h1>
-    //     <h1>Menu </h1>
-    //     </div>
-    //   )
-    // }
-// let classstyle=arrayB.map(i=> console.log(i));
+   
 
        
     return (
@@ -38,7 +29,7 @@ let repeats = 3;
       <div>
         <Slider {...settings}>
           {data.map((item, index) => 
-          <div onClick={() => onSelect(index)} className="catg " key={index}>
+          <div onClick={() => onSelect(index)} className="catg "  key={index}>
             <h3 className="cn">{item.title}</h3>
           </div>)}
         </Slider>

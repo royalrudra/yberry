@@ -45,11 +45,14 @@ export default class Cart extends Component {
 
                 <Taxpay name="Sub-Total" price={cartTotal} />
                 <Taxcart price={cartTotal} />
-                <Cardmodal banks={this.props.banks} />
+                
+                <Cardmodal banks={this.props.banks}    onCardpay={this.props.onCardpay} />
                  <Paymodal totalPrice={cartTotal} />       
-                <Notemodal />
+                <Notemodal  
+               
+                  onnoteClicked={this.props.onnoteClicked} />
                 <Cancelmodal onCancel={this.props.onCancel} />
-                <Hold onHoldclick={this.props.onHoldclick} />
+                {/* <Hold onHoldclick={this.props.onHoldclick} /> */}
               
                 </div>
           </Card>

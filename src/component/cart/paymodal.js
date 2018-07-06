@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { Button, Modal, Form, Input, Radio,Card } from 'antd';
+import {addtocart} from "../fetch";
 
 const FormItem = Form.Item;
 
@@ -20,6 +21,7 @@ const CollectionCreateForm = Form.create()(
           [e.target.name]:e.target.value
       });
   };
+ 
     
     render() {
       const { visible, onCancel, onCreate, form } = this.props;
@@ -70,15 +72,16 @@ export default class Paymodal extends React.Component {
     this.setState({ visible: false });
   }
 
+
+
   handleCreate = () => {
     const form = this.formRef.props.form;
     form.validateFields((err, values) => {
       if (err) {
         return;
       }
-
-    
       form.resetFields();
+      addtocart();
       this.setState({ visible: false });
     });
   }

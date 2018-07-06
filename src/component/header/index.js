@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Button } from 'antd';
 import Logo from "../assets/img/logo.png";
+import Refresh from "./refresh";
 
 export default class Header extends Component {
   
@@ -11,6 +12,7 @@ export default class Header extends Component {
                 <img className="header-logo"    alt="Logo" src={Logo} />
                 </div>
                 <div className="header-right">
+                <Refresh />
                 <Button ghost>Log Out</Button>
                 </div>
 
